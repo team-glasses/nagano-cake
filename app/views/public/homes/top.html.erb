@@ -1,9 +1,7 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
 <div class='container'>
   <div class='row'>
-    <div class='col-md-3'>
-      <!--renderでジャンル検索の部分テンプレートを呼び出す。-->
+    <div class='col-md-2'>
+      <!--ジャンル検索機能追加後にrenderで部分テンプレートを呼び出す-->
       <div class="border">
         <P class="border-bottom text-center">ジャンル検索</P>
         <P> ケーキ</P>
@@ -12,7 +10,7 @@
         <P> キャンディ</P>
       </div>
     </div>
-    <div class='col-md-8 offset-md-1'>
+    <div class='col-md-9 offset-md-1'>
 
       <h3>新着商品</h3>
       <div>
@@ -31,6 +29,7 @@
         <p>商品名</p>
         <p>¥0,000</p>
       </div>
+      <%=link_to "全ての商品を見る >", items_path %>
     </div>
   </div>
 </div>
