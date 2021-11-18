@@ -2,16 +2,7 @@ Rails.application.routes.draw do
 
 
 
-  resources :customers =
-  namespace :admin do
-    resources :customers
-  end
-
-  resources :addresses
-  namespace :admin do
-  resources :addresses
-  end
-
+  
 
 
 
