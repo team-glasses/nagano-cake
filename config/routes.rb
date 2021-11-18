@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'customers' => 'public/customers#check'
   patch 'customers/withdraw' => 'public/customers#withdraw'
 
+
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
   end
