@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  #後で削除
+  devise_scope :customer do
+  get '/customers/sign_out' => 'public/sessions#destroy'
+end
 
   devise_for :admins,skip: [:registrations, :passwords] ,controllers:{
     sessions: "admin/sessions"
@@ -25,7 +29,6 @@ Rails.application.routes.draw do
   get 'customers/my_page' => 'public/customers#show'
   get 'customers' => 'public/customers#check'
   patch 'customers/withdraw' => 'public/customers#withdraw'
-
 
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
