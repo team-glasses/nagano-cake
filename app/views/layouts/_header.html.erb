@@ -4,11 +4,17 @@
       <a class="navbar-brand" href="/"><span>ながのCAKE</span></a>
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav ml-auto">
-          <% if customer_signed_in? %>
-            <li><%= link_to 'マイページ', customers_my_page_path, class: 'nav-link text-dark' %></li>
-            <li><%= link_to '商品一覧', items_path, class: 'nav-link text-dark' %></li>
-            <li><%= link_to 'カート', cart_items_path, class: 'nav-link text-dark' %></li>
-            <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %></li>
+          <% if admin_signed_in? %>
+            <li><%= link_to '商品一覧', admin_items_path, class: 'btn btn-outline-light btn-sm btn-block nav-link text-dark' %></li>
+            <li><%= link_to '会員一覧', admin_customers_path, class: 'btn btn-outline-light btn-sm btn-block nav-link text-dark' %></li>
+            <li><%= link_to '注文履歴一覧', admin_root_path, class: 'btn btn-outline-light btn-sm btn-block nav-link text-dark' %></li>
+            <li><%= link_to 'ジャンル一覧', admin_categories_path, class: 'btn btn-outline-light btn-sm btn-block nav-link text-dark' %></li>
+            <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'btn btn-outline-light btn-sm btn-block nav-link text-dark' %></li>
+          <% elsif customer_signed_in? %>
+            <li><%= link_to 'マイページ', customers_my_page_path, class: 'btn btn-outline-light btn-sm btn-block nav-link text-dark' %></li>
+            <li><%= link_to '商品一覧', items_path, class: 'btn btn-outline-light btn-sm btn-block nav-link text-dark' %></li>
+            <li><%= link_to 'カート', cart_items_path, class: 'btn btn-outline-light btn-sm btn-block nav-link text-dark' %></li>
+            <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'btn btn-outline-light btn-sm btn-block nav-link text-dark' %></li>
           <% else %>
             <li><%= link_to 'about', homes_about_path, class: 'btn btn-outline-light btn-sm btn-block nav-link text-dark' %></li>
             <li><%= link_to '商品一覧', items_path, class: 'btn btn-outline-light btn-sm btn-block nav-link text-dark' %></li>
@@ -17,6 +23,11 @@
           <% end %>
         </ul>
       </div>
+      <!-- ヘッダー内の検索バーです -->
+      <!--<form id="form2" action="/" method="get">
+        <input id="sbox2"  id="s" name="s" type="text" placeholder="Search"/>
+        <button type="submit" id="sbtn2"><i class="fas fa-search"></i></button>
+      </form>-->
     </div>
   </nav>
 </header>
