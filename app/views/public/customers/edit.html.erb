@@ -1,2 +1,77 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class='container'>
+ <div class='row'>
+  <div class='mx-auto col-8 py-3'>
+
+        <div class="row offset-1 mb-4 ">
+          <p>会員情報編集</p>
+        </div>
+         <%= form_with model:@customer, local:true do |f| %>
+          <form class="form-horizontal mb-3">
+           <div class='mx-auto col-8 py-3'>
+            <table>
+              <tbody>
+                    <div class="form-grop row">
+                        <div class="col-form-label col-sm-3">
+                            <tr>
+                             氏名
+                             <%= f.text_field :last_name, autofocus: true, autocomplete: "family-name", class: "form-control-sm"  %>
+                             <%= f.text_field :first_name, autofocus: true, autocomplete: "given-name", class: "form-control-sm" %>
+                            </tr>
+                        </div>
+                    </div>
+
+                    <div class="form-grop row">
+                      <div class="col-form-label col-sm-3">
+                       <tr>
+                       フリガナ
+                        <%= f.text_field :kana_last_name, autofocus: true, autocomplete: "family-name",class: "form-control-sm" %>
+                        <%= f.text_field :kana_first_name, autofocus: true, autocomplete: "given-name", class: "form-control-sm" %>
+                       </tr>
+                      </div>
+                    </div>
+                     <div class="form-grop row">
+                      <div class="col-form-label col-sm-3">
+                       <tr>
+                        郵便番号<%= f.text_field :postal_code, class: "form-inline input-sm" %>
+                       </tr>
+                      </div>
+                     </div>
+
+                      <div class="form-grop row">
+                        <div class="col-form-label col-sm-3">
+                          <tr>
+                          住所<%= f.text_field :address, class: "form-inline input-sm" %>
+                          </tr>
+                        </div>
+                      </div>
+
+                     <div class="form-grop row">
+                      <div class="col-form-label col-sm-3">
+                        <tr>
+                          電話番号<%= f.text_field :telephone_number, class: "form-inline input-sm" %>
+                        </tr>
+                      </div>
+                     </div>
+
+                     <div class="form-grop row">
+                      <div class="col-form-label col-sm-3">
+                        <tr>
+                         メールアドレス<%= f.text_field :email, class: "form-inline input-sm" %>
+                        </tr>
+                      </div>
+                     </div>
+
+                        <td>
+                          <%= f.submit "編集内容を保存", class: "btn btn-sm btn-success" %>
+                        </td>
+                        <td>
+                          <%= f.submit "退会する",class: "btn btn-sm btn-danger" %>
+                        </td>
+                    </div>
+              </tbody>
+            </table>
+          </div>
+         <% end %>
+  </div>
+ </div>
+</div>
