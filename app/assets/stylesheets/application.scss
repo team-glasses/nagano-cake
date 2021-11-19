@@ -14,3 +14,12 @@
  *= require_self
  */
  @import "bootstrap";
+
+main {
+  margin-top: 20px;
+}
+
+li {
+  list-style: none;
+  display: inline-block;
+}
