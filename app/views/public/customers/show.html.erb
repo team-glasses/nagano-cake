@@ -1,2 +1,62 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class='container'>
+ <div class='row'>
+  <div class='mx-auto col-8 py-3'>
+
+      <div class="row offset-1 mb-4 ">
+        <%= form_with model:@customer, local:true do |f| %>
+          <p>マイページ</p>
+          <form class="form-horizontal mb-3">
+           <div class='mx-auto col-8 py-3'>
+            <table>
+            <tr>登録情報</tr>
+            <tr><%= f.submit "編集する",class: "btn btn-sm btn-success" %></tr>
+              <tbody>
+                <div class="form-grop row">
+                    <div class="col-form-label col-sm-3">
+                        <label for="name">氏名</label>
+                    </div>
+                </div>
+
+                <div class="form-grop row">
+                  <div class="col-form-label col-sm-3">
+                    <label for="kana_name">フリガナ</label>
+                  </div>
+                </div>
+
+                <div class="form-grop row">
+                  <div class="col-form-label col-sm-3">
+                      <label for="name">郵便番号</label>
+                  </div>
+                </div>
+
+                <div class="form-grop row">
+                  <div class="col-form-label col-sm-3">
+                      住所
+                  </div>
+                </div>
+
+                <div class="form-grop row">
+                 <div class="col-form-label col-sm-3">
+                    電話番号
+                 </div>
+                </div>
+
+                <div class="form-grop row">
+                 <div class="col-form-label col-sm-3">
+                   メールアドレス
+                 </div>
+                </div>
+              <div class="form-grop row">
+                 <div class="col-form-label col-sm-3">
+                   <tr>配送先</tr>
+                   <%= f.submit "一覧を見る",class: "btn btn-sm btn-primary" %>
+                 </div>
+              </div>
+
+              </tbody>
+            </table>
+        <% end %>
+      </div>
+  </div>
+ </div>
+</div>

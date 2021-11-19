@@ -1,2 +1,24 @@
-<h1>Public::Customers#check</h1>
-<p>Find me in app/views/public/customers/check.html.erb</p>
+<div class="text-center">
+  <div class="container">
+    <div class='mx-auto col-8 py-3'>
+      <%= form_with model:@customer, local:true do |f| %>
+        <table>
+          <tbody>
+              <p>
+                <strong>本当に退会しますか?</strong>
+              </p>
+              <p>
+                退会すると会員登録情報や<br>
+                これまでの購入履歴が閲覧できなくなります。<br>
+                退化する場合は、「退会する」をクリックしてください。
+              </p>
+                  <tr>
+                  <%= f.submit "退会しない",class: "btn btn-sm btn-primary" %>
+                  <%= f.submit "退会する",class: "btn btn-sm btn-danger" %>
+          </tbody>
+         </table>
+      <% end %>
+    </div>
+  </div>
+</div>
+
