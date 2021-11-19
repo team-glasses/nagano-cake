@@ -10,6 +10,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <!--renderでヘッダーを部分テンプレートで呼び出す。-->
+    <%= render 'layouts/header' %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
