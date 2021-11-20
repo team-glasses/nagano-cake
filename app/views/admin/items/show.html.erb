@@ -1,2 +1,32 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-auto">
+      <%= attachment_image_tag @item, format: 'jpeg', size: "70x70" %>
+    </div>
+    <div class="col">
+      <div class="row">
+        <div>商品名</div>
+        <%= @item.name %>
+      </div>
+      <div class="row">
+        <div>商品説明</div>
+        <%= @item.explanation %>
+      </div>
+      <div class="row">
+        <div>ジャンル</div>
+        <%= @item.category.name %>
+      </div>
+      <div class="row">
+        <div>
+          税込価格
+          (税抜価格)
+        </div>
+        <%= @item.price %>
+      </div>
+      <div class="row">
+        <div>販売ステータス</div>
+        <%= @item.is_active %>
+      </div>
+    </div>
+  </div>
+</div>
