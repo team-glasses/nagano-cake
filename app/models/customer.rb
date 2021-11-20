@@ -9,4 +9,9 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :orders
 
+  #フルネーム表示用のメソッド
+  def full_name
+    self.last_name + self.first_name
+  end
+
 end
