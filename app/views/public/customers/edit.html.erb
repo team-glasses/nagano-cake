@@ -3,12 +3,12 @@
   <div class='mx-auto col-8 py-3'>
 
         <div class="row offset-1 mb-4 ">
-         <%= form_with model:@customer, local:true do |f| %>
             <p>
               <strong>会員情報編集</strong>
             </p>
         </div>
-            <form class="form-horizontal mb-3">
+         <%= form_with model:@customer , local:true do |f| %>
+            <div class="form-horizontal mb-3">
              <div class='mx-auto col-8 py-3'>
               <table>
                 <tbody>
@@ -35,7 +35,7 @@
                         <div class="col-form-label col-sm-3">
                          <tr>
                           <label for="postal_code">郵便番号</label>&emsp;&emsp;&emsp;&emsp;
-                          <%= f.text_field :postal_code,autocomplete: "postal_code", class: "form-controll-sm" %>
+                          <%= f.text_field :postal_code,autofocus: true, autocomplete: "postal_code", class: "form-controll-sm" %>
                          </tr>
                         </div>
                        </div>
@@ -44,7 +44,7 @@
                           <div class="col-form-label col-sm-3">
                             <tr>
                               <label for="address">住所</label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                              <%= f.text_field :address, autocomplete: "address",class: "form-inline input-sm" %>
+                              <%= f.text_field :address, autofocus: true, autocomplete: "address",class: "form-inline input-sm" %>
                             </tr>
                           </div>
                         </div>
@@ -53,7 +53,7 @@
                         <div class="col-form-label col-sm-3">
                           <tr>
                             <label for="telephone_number">電話番号</label>&emsp;&emsp;&emsp;&emsp;
-                            <%= f.text_field :telephone_number, autocomplete: "tel",class: "form-inline input-sm" %>
+                            <%= f.text_field :telephone_number, autofocus: true, autocomplete: "tel",class: "form-inline input-sm" %>
                           </tr>
                         </div>
                        </div>
@@ -68,6 +68,7 @@
                        </div>
                           <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                             <%= f.submit "編集内容を保存", class: "btn btn-sm btn-success" %>
+                            <% end %>
                           </td>
                           <td>
                             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= link_to "退会する",customers_path,class: "btn btn-sm btn-danger" %>
@@ -75,7 +76,6 @@
                 </tbody>
               </table>
             </div>
-         <% end %>
   </div>
  </div>
 </div>

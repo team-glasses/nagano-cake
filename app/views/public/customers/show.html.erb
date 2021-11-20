@@ -1,81 +1,105 @@
+<% if flash[:notice] %>
+  <p id="notice">
+  <%= flash[:notice] %>
+  </p>
+ <% end %>
+
+
 <div class='container'>
  <div class='row'>
   <div class='mx-auto col-8 py-3'>
 
-      <div class="row offset-1 mb-4 ">
-          <p>
-        <%= form_with model:@customer, local:true do |f| %>
-            <strong>マイページ</strong>
-          </p>
-          <form class="form-horizontal mb-3">
-           <div class='mx-auto col-8 py-3'>
+    <div class="row offset-1 mb-4 ">
+      <%= form_with model:@customer, local:true do |f| %>
+        <strong>マイページ</strong>
+
+        <form class="form-horizontal mb-3">
+        <div class='mx-auto col-8 py-3'>
+           <strong>登録情報</strong> &emsp;&emsp;&emsp;&emsp;
+           <%=link_to "編集する",edit_customer_path(@customer.id), class: "btn btn-sm btn-success" %>
             <table>
-              <tr>
-                <strong>登録情報</strong>
-              </tr>&emsp;&emsp;&emsp;&emsp;
-              
-              <!-- あとでsubmitに変更したものを入力する-->
-              <tr><%=link_to "編集する", class: "btn btn-sm btn-success" %></tr>
-              <tbody>
-                <div class="form-grop row">
-                    <div class="col-form-label col-sm-3">
-                        <label for="name">氏名</label>
-                        <%= f.text_field :last_name, class: "form-control input-sm" %>
-                    </div>
-                </div>
-
-                <div class="form-grop row">
-                  <div class="col-form-label col-sm-3">
-                    <label for="kana_name">フリガナ</label>
-                  </div>
-                </div>
-
-                <div class="form-grop row">
-                  <div class="col-form-label col-sm-3">
-                      <label for="postal_code">郵便番号</label>
-                  </div>
-                </div>
-
-                <div class="form-grop row">
-                  <div class="col-form-label col-sm-3">
-                      <label for="address">住所</label>
-                  </div>
-                </div>
-
-                <div class="form-grop row">
-                 <div class="col-form-label col-sm-3">
-                    <label for="telephone_number">電話番号</label>
-                 </div>
-                </div>
-
-                <div class="form-grop row">
-                 <div class="col-form-label col-sm-3">
-                   <label for="email">メールアドレス</label>
-                 </div>
-                </div>
-                <div class="form-grop row">
-                 <div class="col-form-label col-sm-3">
+             <tbody>
+              <div class="form-grop row">
+                <div class="col-form-label col-sm-3">
                    <tr>
+                    <label for="name">氏名</label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    <%= @customer.last_name %> &emsp;&emsp;
+                    <%= @customer.first_name %>
+                   </tr>
+                </div>
+              </div>
+
+              <div class="form-grop row">
+                <div class="col-form-label col-sm-3">
+                  <tr>
+                    <label for="kana_name">フリガナ</label>&emsp;&emsp;&emsp;&emsp;
+                    <%= @customer.kana_first_name %>
+                    <%= @customer.kanafirst_name %>
+                  </tr>
+                </div>
+              </div>
+
+              <div class="form-grop row">
+                <div class="col-form-label col-sm-3">
+                  <tr>
+                    <label for="postal_code">郵便番号</label>&emsp;&emsp;&emsp;&emsp;
+                    <%= f.text_field :postal_code,autocomplete: "postal_code", class: "form-controll-sm" %>
+                  </tr>
+                </div>
+              </div>
+
+              <div class="form-grop row">
+                <div class="col-form-label col-sm-3">
+                    <tr>
+                      <label for="address">住所</label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                      <%= f.text_field :address, autocomplete: "address",class: "form-inline input-sm" %>
+                    </tr>
+                </div>
+              </div>
+
+              <div class="form-grop row">
+                <div class="col-form-label col-sm-3">
+                  <tr>
+                    <label for="telephone_number">電話番号</label>&emsp;&emsp;&emsp;&emsp;
+                    <%= f.text_field :telephone_number, autocomplete: "tel",class: "form-inline input-sm" %>
+                  </tr>
+                </div>
+              </div>
+
+              <div class="form-grop row">
+                <div class="col-form-label col-sm-3">
+                  <tr>
+                    <label for="email">メールアドレス</label>&emsp;
+                    <%= f.text_field :email,autofocus: true,autocomplete: "email" ,class: "form-inline input-sm" %>
+                  </tr>
+                </div>
+              </div>
+
+              <div class="form-grop row">
+                <div class="col-form-label col-sm-3">
+                  <tr>
                     <strong>配送先</strong>
-                   </tr>&emsp;&emsp;&emsp;&emsp;&emsp;
-                   <%= link_to "一覧を見る",addresses_path,class: "btn btn-sm btn-primary" %>
-                 </div>
+                  </tr>&emsp;&emsp;&emsp;&emsp;&emsp;
+                    <%= link_to "一覧を見る",addresses_path,class: "btn btn-sm btn-primary" %>
                 </div>
+              </div>
 
-                <div class="form-grop row">
-                 <div class="col-form-label col-sm-3">
-                   <tr>
+              <div class="form-grop row">
+                <div class="col-form-label col-sm-3">
+                  <tr>
                     <strong>注文履歴</strong>
-                   </tr>&emsp;&emsp;&emsp;&emsp;
-                   <%= link_to "一覧を見る",orders_path,class: "btn btn-sm btn-primary" %>
-                 </div>
+                  </tr>&emsp;&emsp;&emsp;&emsp;
+                  <%= link_to "一覧を見る",orders_path,class: "btn btn-sm btn-primary" %>
                 </div>
+              </div>
 
-              </tbody>
+             </tbody>
             </table>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
+    </div>
   </div>
  </div>
 </div>
+
 

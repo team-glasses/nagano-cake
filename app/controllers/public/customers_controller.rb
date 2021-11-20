@@ -9,24 +9,16 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    @customer = current_customer
-    @customer.update(customer_params)
-    redirect_to customers_my_page_path
+    if @customer = current_customer
+     redirect_to customers_my_page_path
+      flash[:notice] = "profile was successfully updated."
+    end
   end
 
-  def withdrawl
-  end
+ private
 
-  #いるかいらないかを検討　機能としてはupdateになる?
-  def destroy
-    current_member.update(is_deleted: true, withdrawal_status: 1)
-    reset_session
-    redirect_to root_path
-  end
-
-private
-  def member_params
-   	params.require(:member).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :phone_number, :withdrawal_status, :email)
+  def customer_params
+    params.require(:customer).permit(:last_name, :first_name, :kana_first_name, :kana_last_name, :postal_code, :address, :telephone_number, :email)
   end
 
 end
