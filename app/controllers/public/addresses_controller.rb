@@ -2,9 +2,16 @@ class Public::AddressesController < ApplicationController
   def index
   end
 
+  def create
+  end
+
+  def destroy
+  end
+
   def edit
   end
 
-  def create
+  def update
   end
+
 end
