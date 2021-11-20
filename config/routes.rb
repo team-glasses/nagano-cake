@@ -5,7 +5,10 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
+  #後で削除
+  devise_scope :customer do
+    get '/customers/sign_out' => 'public/sessions#destroy'
+  end
 
   devise_for :admins,skip: [:registrations, :passwords] ,controllers:{
     sessions: "admin/sessions"
