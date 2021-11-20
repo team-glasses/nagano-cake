@@ -13,8 +13,11 @@
                 退化する場合は、「退会する」をクリックしてください。
               </p>
                   <tr>
-                  <%= f.submit "退会しない",class: "btn btn-sm btn-primary" %>
-                  <%= f.submit "退会する",class: "btn btn-sm btn-danger" %>
+                  <%= link_to "退会しない",customers_my_page_path,class: "btn btn-sm btn-primary" %>&emsp;
+                  
+                   <!-- 後でsubmit形式に変更する。今変えてもArgumentError in Public::Customers#checkがでる -->
+                  <%= link_to "退会する",root_path,class: "btn btn-sm btn-danger" %>
+                  </tr>
           </tbody>
          </table>
       <% end %>

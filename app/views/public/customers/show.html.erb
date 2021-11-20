@@ -3,17 +3,24 @@
   <div class='mx-auto col-8 py-3'>
 
       <div class="row offset-1 mb-4 ">
+          <p>
         <%= form_with model:@customer, local:true do |f| %>
-          <p>マイページ</p>
+            <strong>マイページ</strong>
+          </p>
           <form class="form-horizontal mb-3">
            <div class='mx-auto col-8 py-3'>
             <table>
-            <tr>登録情報</tr>
-            <tr><%= f.submit "編集する",class: "btn btn-sm btn-success" %></tr>
+              <tr>
+                <strong>登録情報</strong>
+              </tr>&emsp;&emsp;&emsp;&emsp;
+              
+              <!-- あとでsubmitに変更したものを入力する-->
+              <tr><%=link_to "編集する", class: "btn btn-sm btn-success" %></tr>
               <tbody>
                 <div class="form-grop row">
                     <div class="col-form-label col-sm-3">
                         <label for="name">氏名</label>
+                        <%= f.text_field :last_name, class: "form-control input-sm" %>
                     </div>
                 </div>
 
@@ -25,33 +32,44 @@
 
                 <div class="form-grop row">
                   <div class="col-form-label col-sm-3">
-                      <label for="name">郵便番号</label>
+                      <label for="postal_code">郵便番号</label>
                   </div>
                 </div>
 
                 <div class="form-grop row">
                   <div class="col-form-label col-sm-3">
-                      住所
+                      <label for="address">住所</label>
                   </div>
                 </div>
 
                 <div class="form-grop row">
                  <div class="col-form-label col-sm-3">
-                    電話番号
+                    <label for="telephone_number">電話番号</label>
                  </div>
                 </div>
 
                 <div class="form-grop row">
                  <div class="col-form-label col-sm-3">
-                   メールアドレス
+                   <label for="email">メールアドレス</label>
                  </div>
                 </div>
-              <div class="form-grop row">
+                <div class="form-grop row">
                  <div class="col-form-label col-sm-3">
-                   <tr>配送先</tr>
-                   <%= f.submit "一覧を見る",class: "btn btn-sm btn-primary" %>
+                   <tr>
+                    <strong>配送先</strong>
+                   </tr>&emsp;&emsp;&emsp;&emsp;&emsp;
+                   <%= link_to "一覧を見る",addresses_path,class: "btn btn-sm btn-primary" %>
                  </div>
-              </div>
+                </div>
+
+                <div class="form-grop row">
+                 <div class="col-form-label col-sm-3">
+                   <tr>
+                    <strong>注文履歴</strong>
+                   </tr>&emsp;&emsp;&emsp;&emsp;
+                   <%= link_to "一覧を見る",orders_path,class: "btn btn-sm btn-primary" %>
+                 </div>
+                </div>
 
               </tbody>
             </table>
@@ -60,3 +78,4 @@
   </div>
  </div>
 </div>
+
