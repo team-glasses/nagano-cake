@@ -15,7 +15,14 @@
         </p>
       </div>
       <h4>新着商品</h4>
-      <!--商品新規登録機能追加後に登録商品を呼び出せるように修正-->
+      <% @item.each do |item| %>
+        <%= attachment_image_tag item, :image %>
+        <h4><%= link_to item.name, item_path(item), class: "item_#{item.id}" %></h4>
+        <%= item.explanation %>
+        <!--item.rbでの計算結果を3桁ごとにカンマ区切りで表示-->
+        ￥<%= item.add_tax_price.to_s(:delimited) %> （税込）
+      <% end %>
+      <!--商品新規登録機能追加後に削除-->
       <div class="newitem">
         <%= image_tag 'rails-logo', size: '200x150' %>
         <p>商品名</p>
