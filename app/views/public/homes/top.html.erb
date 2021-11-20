@@ -3,7 +3,7 @@
     <div class='col-md-2'>
       <%= render 'public/items/category_search', category: @categories %>
     </div>
-    <div class='col-md-9 offset-md-1'>
+    <div class='col-md-10'>
       <div>
         <p class="border">
           <br />
@@ -16,33 +16,13 @@
       </div>
       <h4>新着商品</h4>
       <% @item.each do |item| %>
-        <%= attachment_image_tag item, :image %>
-        <h4><%= link_to item.name, item_path(item), class: "item_#{item.id}" %></h4>
-        <%= item.explanation %>
-        <!--item.rbでの計算結果を3桁ごとにカンマ区切りで表示-->
-        ￥<%= item.add_tax_price.to_s(:delimited) %> （税込）
+        <div class="col-lg-3 item">
+          <%= attachment_image_tag item, :image, size: "200x150" %><br />
+          <%= link_to item.name, item_path(item), class: "item_#{item.id}" %><br />
+          <!--item.rbでの計算結果を3桁ごとにカンマ区切りで表示-->
+          ￥<%= item.add_tax_price.to_s(:delimited) %> （税込）
+        </div>
       <% end %>
-      <!--商品新規登録機能追加後に削除-->
-      <div class="newitem">
-        <%= image_tag 'rails-logo', size: '200x150' %>
-        <p>商品名</p>
-        <p>¥0,000</p>
-      </div>
-      <div class="newitem">
-        <%= image_tag 'rails-logo', size: '200x150' %>
-        <p>商品名</p>
-        <p>¥0,000</p>
-      </div>
-      <div class="newitem">
-        <%= image_tag 'rails-logo', size: '200x150' %>
-        <p>商品名</p>
-        <p>¥0,000</p>
-      </div>
-      <div class="newitem">
-        <%= image_tag 'rails-logo', size: '200x150' %>
-        <p>商品名</p>
-        <p>¥0,000</p>
-      </div>
       <div>
         <%=link_to "全ての商品を見る >", items_path %>
       </div>
