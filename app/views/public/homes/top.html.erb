@@ -16,7 +16,7 @@
       </div>
       <h4>新着商品</h4>
       <% @item.each do |item| %>
-        <div class="col-lg-3 item">
+        <div class="item">
           <%= attachment_image_tag item, :image, size: "200x150" %><br />
           <%= link_to item.name, item_path(item), class: "item_#{item.id}" %><br />
           <!--item.rbでの計算結果を3桁ごとにカンマ区切りで表示-->
