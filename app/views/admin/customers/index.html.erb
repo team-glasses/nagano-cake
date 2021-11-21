@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-2 bg-light text-center">
+    <div class="col-auto offset-1">
       <h5>会員一覧</h5>
     </div>
   </div>
   <div class="row">
-    <div class="col-12">
+    <div class="col-9 mx-auto">
       <table class="table">
-        <thead class="table-light">
+        <thead>
           <tr>
             <th>会員ID</th>
             <th>氏名</th>
@@ -19,9 +19,15 @@
           <tbody>
             <tr>
               <td><%= customer.id %></td>
-              <td><%= customer.full_name %></td>
+              <td><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer), class: "text-dark" %></td>
               <td><%= customer.email %></td>
-              <td></td>
+              <td>
+                <% if customer.is_deleted == false %>
+                  <p class="text-success">有効</p>
+                <% else %>
+                  <p class="text-secondary">退会</p>
+                <% end %>
+              </td>
             </tr>
           </tbody>
         <% end %>
