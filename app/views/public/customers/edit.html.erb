@@ -1,81 +1,82 @@
 <div class='container'>
  <div class='row'>
   <div class='mx-auto col-8 py-3'>
+    <div class="row offset-1 mb-4 ">
+      <%= form_with model:@customer , local:true do |f| %>
+        <strong>会員情報編集</strong>
+        <form class="form-horizontal mb-3">
+        <div class='mx-auto col-8 py-3'>
+            <table>
+             <tbody>
+              <div class="form-grop row">
+                <div class="col-form-label col-sm-3">
+                   <tr>
+                    <label for="name">氏名</label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    <%= f.text_field :last_name, autofocus: true, autocomplete: "family-name", class: "form-control-sm"  %>&emsp;&emsp;
+                    <%= f.text_field :first_name, autofocus: true, autocomplete: "given-name", class: "form-control-sm" %>
+                   </tr>
+                </div>
+              </div>
 
-        <div class="row offset-1 mb-4 ">
-         <%= form_with model:@customer, local:true do |f| %>
-            <p>
-              <strong>会員情報編集</strong>
-            </p>
+              <div class="form-grop row">
+                <div class="col-form-label col-sm-3">
+                  <tr>
+                    <label for="kana_name">フリガナ</label>&emsp;&emsp;&emsp;&emsp;
+                    <%= f.text_field :kana_last_name, autofocus: true, autocomplete: "family-name",class: "form-control-sm" %>&emsp;&emsp;
+                    <%= f.text_field :kana_first_name, autofocus: true, autocomplete: "given-name", class: "form-control-sm" %>
+                  </tr>
+                </div>
+              </div>
+
+              <div class="form-grop row">
+                <div class="col-form-label col-sm-3">
+                  <tr>
+                    <label for="postal_code">郵便番号</label>&emsp;&emsp;&emsp;&emsp;
+                    <%= f.text_field :postal_code,autocomplete: "postal_code", class: "form-controll-sm" %>
+                  </tr>
+                </div>
+              </div>
+
+              <div class="form-grop row">
+                <div class="col-form-label col-sm-3">
+                    <tr>
+                      <label for="address">住所</label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                      <%= f.text_field :address, autocomplete: "address",class: "form-inline input-sm" %>
+                    </tr>
+                </div>
+              </div>
+
+              <div class="form-grop row">
+                <div class="col-form-label col-sm-3">
+                  <tr>
+                    <label for="telephone_number">電話番号</label>&emsp;&emsp;&emsp;&emsp;
+                    <%= f.text_field :telephone_number, autocomplete: "tel",class: "form-inline input-sm" %>
+                  </tr>
+                </div>
+              </div>
+
+              <div class="form-grop row">
+                <div class="col-form-label col-sm-3">
+                  <tr>
+                    <label for="email">メールアドレス</label>&emsp;
+                    <%= f.text_field :email,autofocus: true,autocomplete: "email" ,class: "form-inline input-sm" %>
+                  </tr>
+                </div>
+              </div>
+
+              <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <%= f.submit "編集内容を保存", class: "btn btn-sm btn-success" %>
+                <% end %>
+              </td>
+              <td>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= link_to "退会する",customers_path,class: "btn btn-sm btn-danger" %>
+              </td>
+             </tbody>
+            </table>
         </div>
-            <form class="form-horizontal mb-3">
-             <div class='mx-auto col-8 py-3'>
-              <table>
-                <tbody>
-                      <div class="form-grop row">
-                          <div class="col-form-label col-sm-3">
-                              <tr>
-                               <label for="name">氏名</label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                               <%= f.text_field :last_name, autofocus: true, autocomplete: "family-name", class: "form-control-sm"  %>&emsp;&emsp;&emsp;
-                               <%= f.text_field :first_name, autofocus: true, autocomplete: "given-name", class: "form-control-sm" %>
-                              </tr>
-                          </div>
-                      </div>
-
-                      <div class="form-grop row">
-                        <div class="col-form-label col-sm-3">
-                         <tr>
-                         <label for="kana_name">フリガナ</label>&emsp;&emsp;&emsp;&emsp;
-                          <%= f.text_field :kana_last_name, autofocus: true, autocomplete: "family-name",class: "form-control-sm" %>&emsp;&emsp;&emsp;
-                          <%= f.text_field :kana_first_name, autofocus: true, autocomplete: "given-name", class: "form-control-sm" %>
-                         </tr>
-                        </div>
-                      </div>
-                       <div class="form-grop row">
-                        <div class="col-form-label col-sm-3">
-                         <tr>
-                          <label for="postal_code">郵便番号</label>&emsp;&emsp;&emsp;&emsp;
-                          <%= f.text_field :postal_code,autocomplete: "postal_code", class: "form-controll-sm" %>
-                         </tr>
-                        </div>
-                       </div>
-
-                        <div class="form-grop row">
-                          <div class="col-form-label col-sm-3">
-                            <tr>
-                              <label for="address">住所</label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                              <%= f.text_field :address, autocomplete: "address",class: "form-inline input-sm" %>
-                            </tr>
-                          </div>
-                        </div>
-
-                       <div class="form-grop row">
-                        <div class="col-form-label col-sm-3">
-                          <tr>
-                            <label for="telephone_number">電話番号</label>&emsp;&emsp;&emsp;&emsp;
-                            <%= f.text_field :telephone_number, autocomplete: "tel",class: "form-inline input-sm" %>
-                          </tr>
-                        </div>
-                       </div>
-
-                       <div class="form-grop row">
-                        <div class="col-form-label col-sm-3">
-                          <tr>
-                           <label for="email">メールアドレス</label>&emsp;
-                           <%= f.text_field :email,autofocus: true,autocomplete: "email" ,class: "form-inline input-sm" %>
-                          </tr>
-                        </div>
-                       </div>
-                          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                            <%= f.submit "編集内容を保存", class: "btn btn-sm btn-success" %>
-                          </td>
-                          <td>
-                            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= link_to "退会する",customers_path,class: "btn btn-sm btn-danger" %>
-                          </td>
-                </tbody>
-              </table>
-            </div>
-         <% end %>
+    </div>
   </div>
  </div>
 </div>
+
+
