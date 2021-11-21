@@ -10,6 +10,14 @@
         <%= form_with model: [:admin, @customer], local: true do |f| %>
 
           <div class="form-grop row">
+            <%= f.label :address, "会員ID", class: "col-md-3 col-form-label"  %>
+            <div class="col-1"></div>
+            <div class="col-7">
+              <%= @customer.id %>
+            </div>
+          </div>
+
+          <div class="form-grop row">
             <div class="col-form-label col-3">名前</div>
               <div class="col-1"></div>
               <div class="col-3">
@@ -68,7 +76,13 @@
           <div class="form-group row">
             <%= f.label :email, "会員ステータス", class: "col-3 col-form-label"  %>
             <div class="col-1"></div>
-            <div class="col-3">
+            <div class="col-2">
+              <%= f.radio_button :is_deleted, :false %>
+              <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
+            </div>
+            <div class="col-2">
+              <%= f.radio_button :is_deleted, :true %>
+              <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
             </div>
           </div>
 

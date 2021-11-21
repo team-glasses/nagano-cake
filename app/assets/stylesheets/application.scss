@@ -26,8 +26,6 @@ li {
   display: inline-block;
 }
 
-
-
 .btn-success{
   background-color: #3b7960;
   border-color: #3b7960;
@@ -42,5 +40,8 @@ li {
   background-color: #bb5548;
   border-color: #bb5548;
   color: #fffff9;
+}
 
+.pagination {
+  justify-content: center;
 }
