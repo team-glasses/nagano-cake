@@ -1,12 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-auto">
+    <div class="col-auto offset-1">
       <h5>商品一覧</h5>
     </div>
-    <div class="col float-right">
-      <%= link_to "+", new_admin_item_path %>
+    <div class="col-auto offset-9">
+      <%= link_to "+", new_admin_item_path, class: "btn btn-default rounded-circle shadow-sm" %>
     </div>
-    <div class="row mx-auto">
+  </div>
+  <div class="row">
+    <div class="col-11 mx-auto">
       <table class="table">
         <thead>
           <tr>
@@ -21,10 +23,16 @@
           <tbody>
             <tr>
               <td><%= item.id %></td>
-              <td><%= item.name %></td>
-              <td><%= item.price %></td>
+              <td><%= link_to item.name, admin_item_path(item.id), class: "text-dark" %></td>
+              <td><%= item.price.to_s(:delimited) %></td>
               <td><%= item.category.name %></td>
-              <td><%= item.is_active %></td>
+              <td>
+                <% if item.is_active == true %>
+                  <p class="text-success">販売中</p>
+                <% else %>
+                  <p class="text-secondary">販売停止中</p>
+                <% end %>
+              </td>
             </tr>
           </tbody>
         <% end %>
@@ -32,3 +40,4 @@
     </div>
   </div>
 </div>
+
