@@ -5,12 +5,14 @@
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav ml-auto">
           <% if admin_signed_in? %>
+          <!--管理者でログインしたら-->
             <li><%= link_to '商品一覧', admin_items_path, class: 'btn btn-outline-light btn-sm btn-block nav-link text-dark' %></li>
             <li><%= link_to '会員一覧', admin_customers_path, class: 'btn btn-outline-light btn-sm btn-block nav-link text-dark' %></li>
             <li><%= link_to '注文履歴一覧', admin_root_path, class: 'btn btn-outline-light btn-sm btn-block nav-link text-dark' %></li>
             <li><%= link_to 'ジャンル一覧', admin_categories_path, class: 'btn btn-outline-light btn-sm btn-block nav-link text-dark' %></li>
             <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'btn btn-outline-light btn-sm btn-block nav-link text-dark' %></li>
           <% elsif customer_signed_in? %>
+          <!--カスタマーでログインしたら-->
             <li>ようこそ、<%= current_customer.last_name %>さん！</li>
             <li><%= link_to 'マイページ', customers_my_page_path, class: 'btn btn-outline-light btn-sm btn-block nav-link text-dark' %></li>
             <li><%= link_to '商品一覧', items_path, class: 'btn btn-outline-light btn-sm btn-block nav-link text-dark' %></li>
