@@ -8,93 +8,97 @@
 <div class='container'>
  <div class='row'>
   <div class='mx-auto col-8 py-3'>
-
     <div class="row offset-1 mb-4 ">
       <%= form_with model:@customer, local:true do |f| %>
         <strong>マイページ</strong>
-
         <form class="form-horizontal mb-3">
         <div class='mx-auto col-8 py-3'>
-           <strong>登録情報</strong> &emsp;&emsp;&emsp;&emsp;
-           <%=link_to "編集する",edit_customer_path(@customer.id), class: "btn btn-sm btn-success" %>
+           　<strong>登録情報</strong> &emsp;&emsp;&emsp;&emsp;
+           　<%=link_to "編集する",edit_customer_path(@customer.id), class: "btn btn-sm btn-success" %>
             <table>
              <tbody>
-              <div class="form-grop row">
-                <div class="col-form-label col-sm-3">
-                   <tr>
-                    <label for="name">氏名</label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                    <%= @customer.last_name %> &emsp;&emsp;
-                    <%= @customer.first_name %>
-                   </tr>
-                </div>
-              </div>
+                  <div class="form-grop row">
+                    <div class="col-form-label col-sm-3">
+                        <tr class="brown-border">
+                		    	<td>氏名</td>
+                		    	<td>
+                		    		<%= @customer.last_name %>
+                		    		<%= @customer.first_name %>
+                		    	</td>
+                	      </tr>
+                    </div>
+                  </div>
 
-              <div class="form-grop row">
-                <div class="col-form-label col-sm-3">
-                  <tr>
-                    <label for="kana_name">フリガナ</label>&emsp;&emsp;&emsp;&emsp;
-                    <%= @customer.kana_first_name %>
-                    <%= @customer.kanafirst_name %>
-                  </tr>
-                </div>
-              </div>
+                  <div class="form-grop row">
+                    <div class="col-form-label col-sm-3">
+                      <tr class="brown-border">
+              		    	<td>フリガナ</td>
+              		    	<td>
+              		    		<%= @customer.kana_last_name %>
+              		    		<%= @customer.kana_first_name %>
+              	    		</td>
+                    </div>
+                  </div>
 
-              <div class="form-grop row">
-                <div class="col-form-label col-sm-3">
-                  <tr>
-                    <label for="postal_code">郵便番号</label>&emsp;&emsp;&emsp;&emsp;
-                    <%= f.text_field :postal_code,autocomplete: "postal_code", class: "form-controll-sm" %>
-                  </tr>
-                </div>
-              </div>
+                  <div class="form-grop row">
+                    <div class="col-form-label col-sm-3">
+                      <tr class="brown-border">
+              		    	<td>郵便番号</td>
+              		    	<td><%= @customer.postal_code %></td>
+              	      </tr>
+                    </div>
+                  </div>
 
-              <div class="form-grop row">
-                <div class="col-form-label col-sm-3">
-                    <tr>
-                      <label for="address">住所</label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                      <%= f.text_field :address, autocomplete: "address",class: "form-inline input-sm" %>
-                    </tr>
-                </div>
-              </div>
+                  <div class="form-grop row">
+                    <div class="col-form-label col-sm-3">
+                        <tr class="brown-border">
+                		    	<td>住所</td>
+                		    	<td><%= @customer.address %></td>
+                	      </tr>
+                    </div>
+                  </div>
 
-              <div class="form-grop row">
-                <div class="col-form-label col-sm-3">
-                  <tr>
-                    <label for="telephone_number">電話番号</label>&emsp;&emsp;&emsp;&emsp;
-                    <%= f.text_field :telephone_number, autocomplete: "tel",class: "form-inline input-sm" %>
-                  </tr>
-                </div>
-              </div>
+                  <div class="form-grop row">
+                    <div class="col-form-label col-sm-3">
+                     <tr class="brown-border">
+              		    	<td>電話番号</td>
+              		    	<td><%= @customer.telephone_number %></td>
+              	     </tr>
 
-              <div class="form-grop row">
-                <div class="col-form-label col-sm-3">
-                  <tr>
-                    <label for="email">メールアドレス</label>&emsp;
-                    <%= f.text_field :email,autofocus: true,autocomplete: "email" ,class: "form-inline input-sm" %>
-                  </tr>
-                </div>
-              </div>
+                    </div>
+                  </div>
 
-              <div class="form-grop row">
-                <div class="col-form-label col-sm-3">
-                  <tr>
-                    <strong>配送先</strong>
-                  </tr>&emsp;&emsp;&emsp;&emsp;&emsp;
-                    <%= link_to "一覧を見る",addresses_path,class: "btn btn-sm btn-primary" %>
-                </div>
-              </div>
-
-              <div class="form-grop row">
-                <div class="col-form-label col-sm-3">
-                  <tr>
-                    <strong>注文履歴</strong>
-                  </tr>&emsp;&emsp;&emsp;&emsp;
-                  <%= link_to "一覧を見る",orders_path,class: "btn btn-sm btn-primary" %>
-                </div>
-              </div>
-
+                  <div class="form-grop row">
+                    <div class="col-form-label col-sm-3">
+                       <tr class="brown-border">
+                	    		<td>メールアドレス</td>
+                	        <td><%= @customer.email %></td>
+                	     </tr>
+                    </div>
+                  </div>
              </tbody>
+
+
             </table>
+              <table>
+                  <div class="form-grop row">
+                    <div class="col-form-label col-sm-3">
+                      <tr>
+                        <strong>配送先</strong>
+                      </tr>&emsp;&emsp;&emsp;&emsp;&emsp;
+                        <%= link_to "一覧を見る",addresses_path,class: "btn btn-sm btn-primary" %>
+                    </div>
+                  </div>
+
+                  <div class="form-grop row">
+                    <div class="col-form-label col-sm-3">
+                      <tr>
+                        <strong>注文履歴</strong>
+                      </tr>&emsp;&emsp;&emsp;&emsp;
+                      <%= link_to "一覧を見る",orders_path,class: "btn btn-sm btn-primary" %>
+                    </div>
+                  </div>
+              </table>
         </div>
       <% end %>
     </div>

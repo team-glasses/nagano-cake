@@ -9,16 +9,21 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    if @customer = current_customer
+    @customer = current_customer
+    if @customer.update(customer_params)
      redirect_to customers_my_page_path
-      flash[:notice] = "profile was successfully updated."
+      flash[:notice] = "登録情報を更新しました"
     end
   end
 
- private
+  def withdrawl
+  end
 
+
+private
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :kana_first_name, :kana_last_name, :postal_code, :address, :telephone_number, :email)
+   	params.require(:customer).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :telephone_number, :email,  :post_code, :address)
+
   end
 
 end
