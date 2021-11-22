@@ -1,7 +1,6 @@
 <div class="text-center">
   <div class="container">
     <div class='mx-auto col-8 py-3'>
-      <%= form_with model:@customer, local:true do |f| %>
         <table>
           <tbody>
               <p>
@@ -15,11 +14,10 @@
                   <tr>
                   <%= link_to "退会しない",customers_my_page_path,class: "btn btn-sm btn-primary" %>&emsp;
 
-                  <%= f.submit "退会する", method: :patch,class: "btn btn-danger" %>
+                  <%= link_to "退会する", withdrawal_path,method: :patch,class: "btn btn-danger" %>
                   </tr>
           </tbody>
          </table>
-      <% end %>
     </div>
   </div>
 </div>
