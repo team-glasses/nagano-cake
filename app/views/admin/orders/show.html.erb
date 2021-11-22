@@ -1,2 +1,80 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="row offset-1 mb-4">
+      <h5>注文履歴詳細</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2 offset-1">
+      <p>購入者</p>
+    </div>
+    <div class="col-3">
+      <p><%= link_to @order.last_name + customer.first_name, admin_customer_path(customer), class: "text-dark"  %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2 offset-1">
+      <p>注文日</p>
+    </div>
+    <div class="col-3">
+      <p><%= @order.created_at.strftime('%Y/%m/%d') %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2 offset-1">
+      <p>配送先</p>
+    </div>
+    <div class="col-3">
+      <p>〒<%= @order.postal_code.to_s.insert(3, "-") %>""<%= @order.address %> </p><br />
+      <p><%= @order.name %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2 offset-1">
+      <p>支払方法</p>
+    </div>
+    <div class="col-3">
+      <p><%= @customer.payment_method %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2 offset-1">
+      <p>注文ステータス</p>
+    </div>
+    <div class="col-3">
+      <p></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-9 mx-auto">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @order.each do |order| %>
+          <tbody>
+            <tr>
+              <td><%= order.name %></td>
+              <td><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer), class: "text-dark" %></td>
+              <td><%= customer.email %></td>
+              <td>
+                <% if customer.is_deleted == false %>
+                  <p class="text-success">有効</p>
+                <% else %>
+                  <p class="text-secondary">退会</p>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
