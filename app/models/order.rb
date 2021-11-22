@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
   attribute :status, :integer, default: '0'
 
+  attribute :postage, :integer, default: '800'
+
   belongs_to :customer
   has_many :order_items, dependent: :destroy
 
@@ -10,8 +12,8 @@ class Order < ApplicationRecord
 
   enum selected_address: { current_customer_address: 0, addresses_of_current_customer: 1, new_address: 2 }
 
-  def postage_for_order
-    postage = 800
+  def full_address
+    '〒' + postal_code + ' ' + address + ' ' + name
   end
 
 end
