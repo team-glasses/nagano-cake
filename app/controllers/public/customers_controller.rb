@@ -16,13 +16,18 @@ class Public::CustomersController < ApplicationController
     end
   end
 
-  def withdrawl
+  def withdrawal
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
   end
 
 
-private
+  private
   def customer_params
-   	params.require(:customer).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :telephone_number, :email,  :post_code, :address)
+   	params.require(:customer).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :telephone_number, :email,  :postal_code, :address)
 
   end
 
