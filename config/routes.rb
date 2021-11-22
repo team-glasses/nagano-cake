@@ -52,7 +52,13 @@ Rails.application.routes.draw do
 
 
 #orders
-  
+ resources :orders, only: [:new, :confirm, :create, :index, :show], module: :public
+  post 'orders/confirm' => 'public/orders#confirm'
+  get 'orders/complete' => 'public/orders#complete'
+
+  namespace :admin do
+    resources :orders, only: [:show, :update]
+  end
 
 
 #categories
