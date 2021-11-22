@@ -5,11 +5,23 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = CartItem.new(cart_items_params)
-    @cart_item.customer_id = current_customer.id
-    @cart_item.save
-    redirect_to cart_items_path
+     @item = Item.find(cart_items_params[:item_id])
+
+     #同じ商品がカートに入っていた場合
+      if current_customer.cart_items.find_by(item_id: @item)
+        @cart_item = CartItem.find_by(item_id: @item)
+        @cart_item.quantity += params[:cart_item][:quantity].to_i
+
+     #カートに同じ商品がなかった場合
+      else
+        @cart_item = CartItem.new(cart_items_params)
+      end
+
+      @cart_item.customer_id = current_customer.id
+      @cart_item.save
+      redirect_to cart_items_path
   end
+
 
   def update
   end
