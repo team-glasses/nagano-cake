@@ -2,7 +2,7 @@ class Public::ItemsController < ApplicationController
   def index
     @categories = Category.all
     @item = Item.where(is_active: 'true')
-    @items = Item.page(params[:page]).per(4).where(is_active: 'true')
+    @items = Item.page(params[:page]).per(8).where(is_active: 'true')
   end
 
   def show

@@ -17,8 +17,8 @@
 
         <% @orders.each do |order| %>
           <tr>
-            <td><%= orders.created_at.strftime('%Y/%m/%d')%></td>
-            <td><%= orders.postal_code %><br>
+            <td><%= order.created_at.strftime('%Y/%m/%d')%></td>
+            <td><%= @order.postal_code %><br>
                 <%= orders.address %><br>
                 <%= orders.name %>
             </td>
