@@ -16,4 +16,8 @@ class Order < ApplicationRecord
     '〒' + postal_code + ' ' + address + ' ' + name
   end
 
+  def total_billing_amount
+    total_payment + postage
+  end
+
 end

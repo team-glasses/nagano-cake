@@ -9,7 +9,7 @@
       <p>購入者</p>
     </div>
     <div class="col-3">
-      <p><%= link_to @order.last_name + customer.first_name, admin_customer_path(customer), class: "text-dark"  %></p>
+      <p><%= link_to @order.name, admin_order_path, class: "text-dark"  %></p>
     </div>
   </div>
   <div class="row">
@@ -17,7 +17,7 @@
       <p>注文日</p>
     </div>
     <div class="col-3">
-      <p><%= @order.created_at.strftime('%Y/%m/%d') %></p>
+      <p></p>
     </div>
   </div>
   <div class="row">
@@ -25,7 +25,7 @@
       <p>配送先</p>
     </div>
     <div class="col-3">
-      <p>〒<%= @order.postal_code.to_s.insert(3, "-") %>""<%= @order.address %> </p><br />
+      <p>〒 </p><br />
       <p><%= @order.name %></p>
     </div>
   </div>
@@ -34,21 +34,14 @@
       <p>支払方法</p>
     </div>
     <div class="col-3">
-      <p><%= @customer.payment_method %></p>
+      <p></p>
     </div>
   </div>
   <div class="row">
     <div class="col-2 offset-1">
       <p>注文ステータス</p>
     </div>
-    <%= form_with model: [:admin, @order],local: true) do |f| %>
-    <div class="col-3">
-      <%= form.select :prefecture, options_for_select(Order.statuses), class: "status-select" %>
-    </div>
-    <div class="col-1">
-      <%= f.submit "更新", class: 'btn btn-success btn-block' %>
-    </div>
-    <% end %>
+
   </div>
   <div class="row">
     <div class="col-6 mx-auto">
@@ -63,20 +56,6 @@
             <th></th>
           </tr>
         </thead>
-        <% @order.each do |order| %>
-          <tbody>
-            <%= form_with model: [:admin, @order_item],local: true) do |f| %>
-            <tr>
-              <td><%= order.user.name %></td>
-              <td><%= order.order_item.price %></td>
-              <td><%= order.order_item.quantity %></td>
-              <td><%= order.total_payment %></td>
-              <td></td>
-              <td><%= f.submit "更新", class: "btn btn-success btn-block" %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        <% end %>
       </table>
     </div>
     <div class="col-2 mx-auto">
@@ -85,7 +64,7 @@
           <p>商品合計</p>
         </div>
         <div class="col-1">
-          <p><%= @order.total_payment.to_s(:delimited) %>円</p>
+          <p>円</p>
         </div>
       </div>
       <div class="row">
@@ -93,7 +72,7 @@
           <p>送料</p>
         </div>
         <div class="col-1">
-          <p><%= @order.postage %>円</p>
+          <p>円</p>
         </div>
       </div>
       <div class="row">
@@ -101,7 +80,7 @@
           <p>請求金額合計</p>
         </div>
         <div class="col-1">
-          <p><%= @order.total_billing_amount.to_s(:delimited) %>円</p>
+          <p>円</p>
         </div>
       </div>
     </div>
