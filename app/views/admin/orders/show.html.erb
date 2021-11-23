@@ -51,7 +51,7 @@
     <% end %>
   </div>
   <div class="row">
-    <div class="col-9 mx-auto">
+    <div class="col-6 mx-auto">
       <table class="table">
         <thead>
           <tr>
@@ -78,6 +78,32 @@
           </tbody>
         <% end %>
       </table>
+    </div>
+    <div class="col-2 mx-auto">
+      <div class="row">
+        <div class="col-1">
+          <p>商品合計</p>
+        </div>
+        <div class="col-1">
+          <p><%= @order.total_payment.to_s(:delimited) %>円</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-1">
+          <p>送料</p>
+        </div>
+        <div class="col-1">
+          <p><%= @order.postage %>円</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-1">
+          <p>請求金額合計</p>
+        </div>
+        <div class="col-1">
+          <p><%= @order.total_billing_amount.to_s(:delimited) %>円</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
