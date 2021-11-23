@@ -5,7 +5,8 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @cart_items = CartItem.all
-    @total_price = @cart_items.inject(0){ |sum, item| sum + item.subtotal }
+    @total_price_of_all_cart_item = @cart_items.inject(0){ |sum, item| sum + item.subtotal }
+    @total_payment = @total_price_of_all_cart_item.inject(0){ |sum, item| sum + }
     @order = Order.new(order_params)
     if params[:order][:select_address] == "0"
 
@@ -33,8 +34,8 @@ class Public::OrdersController < ApplicationController
         order_item.price = cart_item.item.price
         order_item.save
       end
-      redirect_to orders_complete_path
       cart_items.destroy_all
+      redirect_to orders_complete_path
     end
   end
 
