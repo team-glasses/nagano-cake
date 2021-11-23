@@ -1,5 +1,5 @@
 class OrderItem < ApplicationRecord
-  attribute :making_status, :integer, default: '0'
+  attribute :making_status, :integer, default: 0
 
   belongs_to :order
   belongs_to :item
