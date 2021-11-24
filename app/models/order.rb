@@ -16,8 +16,8 @@ class Order < ApplicationRecord
     '〒' + postal_code + ' ' + address + ' ' + name
   end
 
-  def total_billing_amount
-    total_payment + postage
+  def customer_name
+    customer.last_name + customer.first_name
   end
 
 end
