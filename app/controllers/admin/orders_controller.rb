@@ -1,7 +1,6 @@
 class Admin::OrdersController < ApplicationController
   def show
     @order = Order.all
-    @customer = Customer.all
   end
 
   def update
