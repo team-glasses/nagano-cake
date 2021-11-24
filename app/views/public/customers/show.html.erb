@@ -1,26 +1,20 @@
-<% if flash[:notice] %>
-  <p id="notice">
-  <%= flash[:notice] %>
-  </p>
- <% end %>
-
 
 <div class='container'>
  <div class='row'>
   <div class='mx-auto col-8 py-3'>
     <div class="row offset-1 mb-4 ">
       <%= form_with model:@customer, local:true do |f| %>
-        <strong>マイページ</strong>
+        <h3><strong>マイページ</strong></h3>
         <form class="form-horizontal mb-3">
         <div class='mx-auto col-8 py-3'>
            　<strong>登録情報</strong> &emsp;&emsp;&emsp;&emsp;
            　<%=link_to "編集する",edit_customer_path(@customer.id), class: "btn btn-sm btn-success" %>
-            <table>
+            <table class="table table-bordered table-condensed">
              <tbody>
                   <div class="form-grop row">
                     <div class="col-form-label col-sm-3">
-                        <tr class="brown-border">
-                		    	<td>氏名</td>
+                        <tr class="col-xs-5 border border-dark">
+                		    	<td class="info border border-dark table-active">氏名</td>
                 		    	<td>
                 		    		<%= @customer.last_name %>
                 		    		<%= @customer.first_name %>
@@ -31,8 +25,8 @@
 
                   <div class="form-grop row">
                     <div class="col-form-label col-sm-3">
-                      <tr class="brown-border">
-              		    	<td>フリガナ</td>
+                      <tr class="col-xs-5 border border-dark">
+              		    	<td class="info border border-dark table-active">フリガナ</td>
               		    	<td>
               		    		<%= @customer.kana_last_name %>
               		    		<%= @customer.kana_first_name %>
@@ -42,8 +36,8 @@
 
                   <div class="form-grop row">
                     <div class="col-form-label col-sm-3">
-                      <tr class="brown-border">
-              		    	<td>郵便番号</td>
+                      <tr class="col-xs-5 border border-dark">
+              		    	<td class="info border border-dark table-active">郵便番号</td>
               		    	<td><%= @customer.postal_code %></td>
               	      </tr>
                     </div>
@@ -51,8 +45,8 @@
 
                   <div class="form-grop row">
                     <div class="col-form-label col-sm-3">
-                        <tr class="brown-border">
-                		    	<td>住所</td>
+                        <tr class="col-xs-5 border border-dark">
+                		    	<td class="info border border-dark table-active">住所</td>
                 		    	<td><%= @customer.address %></td>
                 	      </tr>
                     </div>
@@ -60,8 +54,8 @@
 
                   <div class="form-grop row">
                     <div class="col-form-label col-sm-3">
-                     <tr class="brown-border">
-              		    	<td>電話番号</td>
+                     <tr class="col-xs-5 border border-dark">
+              		    	<td class="info border border-dark table-active">電話番号</td>
               		    	<td><%= @customer.telephone_number %></td>
               	     </tr>
 
@@ -70,8 +64,8 @@
 
                   <div class="form-grop row">
                     <div class="col-form-label col-sm-3">
-                       <tr class="brown-border">
-                	    		<td>メールアドレス</td>
+                       <tr class="col-xs-5 border border-dark">
+                	    		<td class="info border border-dark table-active">メールアドレス</td>
                 	        <td><%= @customer.email %></td>
                 	     </tr>
                     </div>
