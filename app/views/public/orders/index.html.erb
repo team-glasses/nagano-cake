@@ -18,7 +18,7 @@
         <% @orders.each do |order| %>
           <tr>
             <td class="text-right border border-dark"><%= l order.created_at %></td>
-            <td class="text-right border border-dark"><%= order.postal_code %><br>
+            <td class="text-right border border-dark">〒<%= order.postal_code %><br>
                 <%= order.address %><br>
                 <%= order.name %>
             </td>
