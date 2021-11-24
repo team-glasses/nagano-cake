@@ -9,7 +9,7 @@
       <p>購入者</p>
     </div>
     <div class="col-3">
-      <p><%#= @order.customer_name %></p>
+      <p><%= @order.customer_name %></p>
     </div>
   </div>
   <div class="row">
@@ -17,7 +17,7 @@
       <p>注文日</p>
     </div>
     <div class="col-3">
-      <p><%#= l @order.created_at %></p>
+      <p><%= l @order.created_at %></p>
     </div>
   </div>
   <div class="row">
@@ -25,7 +25,7 @@
       <p>配送先</p>
     </div>
     <div class="col-3">
-      <p>〒<%#= @order.postal_code.to_s.insert(3, "-") %>""<%#= @order.address %> </p><br />
+      <p>〒<%= @order.postal_code.to_s.insert(3, "-") %>""<%= @order.address %> </p>
       <p><%= @order.name %></p>
     </div>
   </div>
@@ -34,7 +34,7 @@
       <p>支払方法</p>
     </div>
     <div class="col-3">
-      <p><%#= @order.payment_method %></p>
+      <p><%= @order.payment_method %></p>
     </div>
   </div>
   <div class="row">
@@ -49,7 +49,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-6 mx-auto">
+    <div class="col-7 mx-auto">
       <table class="table">
         <thead>
           <tr>
@@ -62,28 +62,26 @@
           </tr>
         </thead>
         <tbody>
-        <% @order.each do |order| %>
-          <%#= form_with @order_item, local: true do |f| %>
+        <%#= form_with @order_item, local: true do |f| %>
           <tr>
-            <td><%#= order.items.name %></td>
-            <td><%#= order.order_items.price %></td>
-            <td><%#= order.order_items.quantity %></td>
-            <td><%= order.total_payment %></td>
+            <td><%= @order_items.name %></td>
+            <td><%#= @order_items.price.to_s(:delimited)  %></td>
+            <td><%#= @order_items.quantity %></td>
+            <td><%= @order.total_payment.to_s(:delimited)  %></td>
             <td><%#= f.select :making_status %></td>
             <td><%#= f.submit "更新", class: "btn btn-success btn-block" %></td>
           </tr>
-          <%# end %>
-        <% end %>
+        <%# end %>
         </tbody>
       </table>
     </div>
-    <div class="col-2 mx-auto">
+    <div class="col-3">
       <div class="row">
         <div class="col-1">
           <p>商品合計</p>
         </div>
         <div class="col-1">
-          <p><%#= @order.total_payment.to_s(:delimited) %>円</p>
+          <p><%= @order.total_payment.to_s(:delimited) %>円</p>
         </div>
       </div>
       <div class="row">
@@ -91,7 +89,7 @@
           <p>送料</p>
         </div>
         <div class="col-1">
-          <p><%#= @order.postage %>円</p>
+          <p><%= @order.postage %>円</p>
         </div>
       </div>
       <div class="row">
@@ -99,7 +97,7 @@
           <p>請求金額合計</p>
         </div>
         <div class="col-1">
-          <p>円</p>
+          <p><%= @order.total_price.to_s(:delimited) %>円</p>
         </div>
       </div>
     </div>
