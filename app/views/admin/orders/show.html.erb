@@ -9,7 +9,7 @@
       <p>購入者</p>
     </div>
     <div class="col-3">
-      <p><%= link_to @order.name, admin_order_path, class: "text-dark"  %></p>
+      <p><%#= link_to "#{@order.name}", admin_customer_path(@order.customer), class: "text-dark"  %></p>
     </div>
   </div>
   <div class="row">
@@ -17,7 +17,7 @@
       <p>注文日</p>
     </div>
     <div class="col-3">
-      <p></p>
+      <p><%#= @order.created_at.strftime('%Y/%m/%d') %></p>
     </div>
   </div>
   <div class="row">
@@ -25,7 +25,7 @@
       <p>配送先</p>
     </div>
     <div class="col-3">
-      <p>〒 </p><br />
+      <p>〒<%#= @order.postal_code.to_s.insert(3, "-") %>""<%#= @order.address %> </p><br />
       <p><%= @order.name %></p>
     </div>
   </div>
@@ -34,14 +34,19 @@
       <p>支払方法</p>
     </div>
     <div class="col-3">
-      <p></p>
+      <p><%= @order.payment_method %></p>
     </div>
   </div>
   <div class="row">
     <div class="col-2 offset-1">
       <p>注文ステータス</p>
     </div>
-
+    <div class="col-3">
+      <%= form_with(model: @order, url: admin_order_path, local: true, class: "form-row") do |f| %>
+        <%= f.select :order_status, Order.statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm"  %>
+        <%= f.submit "更新", class: 'btn btn-success btn-block' %>
+      <% end %>
+    </div>
   </div>
   <div class="row">
     <div class="col-6 mx-auto">
@@ -56,6 +61,20 @@
             <th></th>
           </tr>
         </thead>
+        <tbody>
+        <% @order.each do |order| %>
+          <%#= form_with @order, local: true do |f| %>
+          <tr>
+            <td><%#= order.item.name %></td>
+            <td><%#= order.order_items.price %></td>
+            <td><%#= order.order_items.quantity %></td>
+            <td><%= order.total_payment %></td>
+            <td><%#= f.select :making_status %></td>
+            <td><%#= f.submit "更新", class: "btn btn-success btn-block" %></td>
+          </tr>
+          <%# end %>
+        <% end %>
+        </tbody>
       </table>
     </div>
     <div class="col-2 mx-auto">
