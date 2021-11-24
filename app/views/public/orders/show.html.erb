@@ -73,16 +73,13 @@
 
               <tr>
     	          <td class="border border-dark"><%= order_items.item_id %> </td>
-    	          <td class="text-right border border-dark"><%= (order_items.price*1.1).to_i.to_s(:delimited) %></td>
+    	          <td class="text-right border border-dark"><%= (order_items.price).to_s(:delimited) %></td>
 
     	          <td class="text-right border border-dark"><%= order_items.quantity %></td>
-    	          <td class="text-right border border-dark"><%= ((order_items.price*1.1).to_i*(order_items.quantity)).to_s(:delimited) %></td>
+    	          <td class="text-right border border-dark"><%= (order_items.price*order_items.quantity).to_s(:delimited) %></td>
               </tr>
           </table>
       </div>
     <% end %>
-
-
-
   </div>
 </div>
