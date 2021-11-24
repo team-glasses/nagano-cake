@@ -9,7 +9,7 @@
       <p>購入者</p>
     </div>
     <div class="col-3">
-      <p><%= @order.customer_name %></p>
+      <p><%= link_to @order.customer_name, customers_my_page_path(@order.customer.id) %></p>
     </div>
   </div>
   <div class="row">
@@ -34,7 +34,7 @@
       <p>支払方法</p>
     </div>
     <div class="col-3">
-      <p><%= @order.payment_method %></p>
+      <p><%= @order.payment_method_i18n %></p>
     </div>
   </div>
   <div class="row">
@@ -43,7 +43,7 @@
     </div>
     <div class="col-3">
       <%= form_with(model: @order, url: admin_order_path, local: true, class: "form-row") do |f| %>
-        <%= f.select :order_status, Order.statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm"  %>
+        <%= f.select :order_status, Order.statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm" %>
         <%= f.submit "更新", class: 'btn btn-success btn-block' %>
       <% end %>
     </div>
