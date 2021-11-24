@@ -20,4 +20,8 @@ class Order < ApplicationRecord
     customer.last_name + customer.first_name
   end
 
+  def total_price
+    total_payment + postage
+  end
+
 end
