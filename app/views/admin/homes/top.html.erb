@@ -22,7 +22,7 @@
               <tbody>
                   <tr>
                     <td><%= link_to "#{order.created_at}", admin_order_path(order) %>日付表示方法あとで修正します。</td>
-                    <td><%= order.name %></td>
+                    <td><%= order.customer_name %></td>
                     <td><%= @total_quantity[order.id] %></td>
                     <td><%= order.status %></td>
                   </tr>

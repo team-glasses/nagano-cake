@@ -16,4 +16,9 @@ class Order < ApplicationRecord
     '〒' + postal_code + ' ' + address + ' ' + name
   end
 
+  def customer_name
+    customer.last_name + customer.first_name
+  end
+
+
 end
