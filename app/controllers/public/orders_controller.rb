@@ -6,12 +6,12 @@ class Public::OrdersController < ApplicationController
   def confirm
     @cart_items = CartItem.all
     @total_price = @cart_items.inject(0){ |sum, item| sum + item.subtotal }
+    @total_payment = @total_price+800
     @order = Order.new(order_params)
     if params[:order][:select_address] == "0"
-
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-      @order.name = current_customer.first_name + current_customer.last_name
+      @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:select_address] == "1"
       @address = Address.find(params[:order][:address_id])
       @order.postal_code = @address.postal_code
@@ -30,11 +30,11 @@ class Public::OrdersController < ApplicationController
         order_item.item_id = cart_item.item_id
         order_item.order_id = @order.id
         order_item.quantity = cart_item.quantity
-        order_item.price = cart_item.item.price
+        order_item.price = cart_item.item.add_tax_price
         order_item.save
       end
-      redirect_to orders_complete_path
       cart_items.destroy_all
+      redirect_to orders_complete_path
     end
   end
 
