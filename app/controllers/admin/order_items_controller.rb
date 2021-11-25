@@ -10,3 +10,5 @@ class Admin::OrderItemsController < ApplicationController
     params.require(:order_item).permit(:making_status)
   end
 end
+
+
