@@ -24,7 +24,7 @@
                     <td><%= link_to "#{l order.created_at, format: :short}", admin_order_path(order) %></td>
                     <td><%= order.customer_name %></td>
                     <td><%= @total_quantity[order.id] %></td>
-                    <td><%= order.status %></td>
+                    <td><%= order.status_i18n %></td>
                   </tr>
                 </tbody>
               <% end %>
