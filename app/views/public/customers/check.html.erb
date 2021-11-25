@@ -12,9 +12,9 @@
                 退化する場合は、「退会する」をクリックしてください。
               </p>
                   <tr>
-                  <%= link_to "退会しない",customers_my_page_path,class: "btn btn-sm btn-primary" %>&emsp;
+                  <%= link_to "退会しない",customers_my_page_path,class: "btn btn-sm btn-primary" %>&emsp;&emsp;
 
-                  <%= link_to "退会する", withdrawal_path,method: :patch,class: "btn btn-danger" %>
+                  <%= link_to "退会する", withdrawal_path,method: :patch, data: { confirm: "本当に退会されますか"},class: "btn btn-danger" %>
                   </tr>
           </tbody>
          </table>
