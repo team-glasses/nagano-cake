@@ -6,11 +6,8 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    if params[:order][:status]) == 1
-      @order.update(status: params[:order][:status])
-      redirect_back(fallback_location: admin_root_path)
-    else
-    end
+    @order.update(status: params[:order][:status])
+    redirect_back(fallback_location: admin_root_path)
   end
 
   private
