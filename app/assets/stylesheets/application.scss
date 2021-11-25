@@ -61,13 +61,12 @@ li {
 .header-btn {
   padding-left: 50px;
   color: #6f5436;
-  
+
 }
 .navbar-nav {
   margin-left: auto
 }
 
-// ヘッダー関係追加分です
 .text-dark{
   color:#6f5436;
 }
@@ -85,6 +84,7 @@ li {
   position: relative;
   background-color: #fce4d6;
   color: #6f5436;
+  border-bottom: 6px double #000;
 }
 
 .site-header__wrapper {
@@ -126,5 +126,10 @@ li {
       position: absolute;
       right: 1rem;
       top: 1rem; } }
+
+.logo{
+  width: 150px;
+}
+
 
 
