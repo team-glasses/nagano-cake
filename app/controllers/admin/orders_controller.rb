@@ -6,9 +6,8 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @order.update(order_params)
-    #仮でadminのトップ画面へ遷移させています。
-    redirect_to admin_root_path
+    @order.update(status: params[:order][:status])
+    redirect_back(fallback_location: admin_root_path)
   end
 
   private
