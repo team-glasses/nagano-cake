@@ -9,7 +9,7 @@
       <p>購入者</p>
     </div>
     <div class="col-3">
-      <p><%= @order.customer_name %></p>
+      <p><%= link_to @order.customer_name, customers_my_page_path(@order.customer.id) %></p>
     </div>
   </div>
   <div class="row">
@@ -24,9 +24,11 @@
     <div class="col-2 offset-1">
       <p>配送先</p>
     </div>
-    <div class="col-3">
-      <p>〒<%= @order.postal_code.to_s.insert(3, "-") %>""<%= @order.address %> </p>
-      <p><%= @order.name %></p>
+    <div class="col-9">
+      <p>
+        〒<%= @order.postal_code.to_s.insert(3, "-") %>&nbsp;<%= @order.address %><br />
+        <%= @order.name %>
+      </p>
     </div>
   </div>
   <div class="row">
@@ -34,16 +36,16 @@
       <p>支払方法</p>
     </div>
     <div class="col-3">
-      <p><%= @order.payment_method %></p>
+      <p><%= @order.payment_method_i18n %></p>
     </div>
   </div>
   <div class="row">
     <div class="col-2 offset-1">
       <p>注文ステータス</p>
     </div>
-    <div class="col-3">
+    <div class="col-2">
       <%= form_with(model: @order, url: admin_order_path, local: true, class: "form-row") do |f| %>
-        <%= f.select :order_status, Order.statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm"  %>
+        <%= f.select :status, Order.statuses.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]}, { prompt: '' }, class: 'form-control' %>
         <%= f.submit "更新", class: 'btn btn-success btn-block' %>
       <% end %>
     </div>
@@ -62,42 +64,44 @@
           </tr>
         </thead>
         <tbody>
-        <%#= form_with @order_item, local: true do |f| %>
+        <% @order_items.each do |order_item| %>
           <tr>
-            <td><%= @order_items.name %></td>
-            <td><%#= @order_items.price.to_s(:delimited)  %></td>
-            <td><%#= @order_items.quantity %></td>
-            <td><%= @order.total_payment.to_s(:delimited)  %></td>
-            <td><%#= f.select :making_status %></td>
-            <td><%#= f.submit "更新", class: "btn btn-success btn-block" %></td>
+            <td><%= order_item.item.name %></td>
+            <td><%= order_item.price.to_s(:delimited)  %></td>
+            <td><%= order_item.quantity %></td>
+            <td><%= (order_item.price*order_item.quantity).to_s(:delimited)  %></td>
+            <%= form_with model: [:admin, order_item], local: true do |f| %>
+              <td><%= f.select :making_status, OrderItem.making_statuses.keys.map{|k| [I18n.t("enums.order_item.making_status.#{k}"), k]}, { prompt: '' }, class: 'form-control' %></td>
+              <td><%= f.submit "更新", class: "btn btn-success btn-block" %></td>
+            <% end %>
           </tr>
-        <%# end %>
+        <% end %>
         </tbody>
       </table>
     </div>
     <div class="col-3">
       <div class="row">
-        <div class="col-1">
+        <div class="col-6">
           <p>商品合計</p>
         </div>
-        <div class="col-1">
-          <p><%= @order.total_payment.to_s(:delimited) %>円</p>
+        <div class="col-6">
+          <p><%= (@order.total_payment - @order.postage).to_s(:delimited) %>円</p>
         </div>
       </div>
       <div class="row">
-        <div class="col-1">
+        <div class="col-6">
           <p>送料</p>
         </div>
-        <div class="col-1">
+        <div class="col-6">
           <p><%= @order.postage %>円</p>
         </div>
       </div>
       <div class="row">
-        <div class="col-1">
+        <div class="col-6">
           <p>請求金額合計</p>
         </div>
-        <div class="col-1">
-          <p><%= @order.total_price.to_s(:delimited) %>円</p>
+        <div class="col-6">
+          <p><%= @order.total_payment.to_s(:delimited) %>円</p>
         </div>
       </div>
     </div>

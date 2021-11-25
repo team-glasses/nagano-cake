@@ -8,7 +8,9 @@
       <h4>商品一覧 （全<%= @item.count %>件）</h4>
       <% @items.each do |items| %>
         <div class="item">
-          <%= attachment_image_tag items, :image, size: "180x135" %><br />
+          <%= link_to item_path(items) do %>
+            <%= attachment_image_tag items, :image, size: "180x135" %>
+          <% end %><br />
           <%= link_to items.name, item_path(items), class: "items_#{items.id}" %><br />
           <!--item.rbでの計算結果を3桁ごとにカンマ区切りで表示-->
           ￥<%= items.add_tax_price.to_s(:delimited) %> （税込）
