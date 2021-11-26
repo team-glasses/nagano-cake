@@ -43,9 +43,9 @@
     <div class="col-2 offset-1">
       <p>注文ステータス</p>
     </div>
-    <div class="col-2">
-      <%= form_with(model: @order, url: admin_order_path, local: true, class: "form-row") do |f| %>
-        <%= f.select :status, Order.statuses.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]}, { prompt: '' }, class: 'form-control' %>
+    <div class="col-4 form-group">
+      <%= form_with(model: @order, url: admin_order_path, local: true) do |f| %>
+        <%= f.select :status, Order.statuses.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]}, { prompt: '' }, class: 'form-control-sm' %>
         <%= f.submit "更新", class: 'btn btn-success btn-block' %>
       <% end %>
     </div>
@@ -71,7 +71,7 @@
             <td><%= order_item.quantity %></td>
             <td><%= (order_item.price*order_item.quantity).to_s(:delimited)  %></td>
             <%= form_with model: [:admin, order_item], local: true do |f| %>
-              <td><%= f.select :making_status, OrderItem.making_statuses.keys.map{|k| [I18n.t("enums.order_item.making_status.#{k}"), k]}, { prompt: '' }, class: 'form-control' %></td>
+              <td><%= f.select :making_status, OrderItem.making_statuses.keys.map{|k| [I18n.t("enums.order_item.making_status.#{k}"), k]}, { prompt: '' }, class: 'form-control-sm' %></td>
               <td><%= f.submit "更新", class: "btn btn-success btn-block" %></td>
             <% end %>
           </tr>
