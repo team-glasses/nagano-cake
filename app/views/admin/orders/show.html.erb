@@ -9,7 +9,7 @@
       <p>購入者</p>
     </div>
     <div class="col-3">
-      <p><%= link_to @order.customer_name, customers_my_page_path(@order.customer.id) %></p>
+      <p><%= link_to @order.customer_name, admin_customer_path(@order.customer.id) %></p>
     </div>
   </div>
   <div class="row">
