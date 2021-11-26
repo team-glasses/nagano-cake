@@ -1,6 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col">
+      <h5>注文情報入力</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 mx-auto">
       <table class='table table-bordered'>
         <thead class="table-light">
           <tr>
@@ -40,12 +45,22 @@
       </table>
     </div>
     <div class="row">
-      <p>支払方法</p>
-      <%= @order.payment_method_i18n %>
-      <p>お届け先</p>
-      <%= @order.postal_code %>
-      <%= @order.address %><br>
-      <%= @order.name %>
+      <div class="col-auto">
+        <p><strong>支払方法</strong></p>
+      </div>
+      <div class="col-auto">
+        <%= @order.payment_method_i18n %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-auto">
+        <p><strong>お届け先</strong></p>
+      </div>
+      <div class="col-auto">
+        <%= @order.postal_code %>
+        <%= @order.address %><br>
+        <%= @order.name %>
+      </div>
     </div>
     <%= form_with model: @order, local: true do |f| %>
       <%= f.hidden_field :postal_code, value: @order.postal_code %>

@@ -7,13 +7,13 @@
   <div class="row">
     <div class="col-8 mx-auto">
       <%= form_with model: @order, url: orders_confirm_path, local: true do |f| %>
-        <label for="input_payment_method", class="row">支払方法</label>
+        <label for="input_payment_method", class="row"><strong>支払方法</strong></label>
         <%= f.radio_button :payment_method, 'credit_card' %>
         <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %><br>
         <%= f.radio_button :payment_method, 'transfer' %>
         <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
 
-        <label for="input_address", class="row">お届け先</label>
+        <label for="input_address", class="row"><strong>お届け先</strong></label>
         <div class="row">
           <div class="col">
             <%= f.radio_button :select_address, "0"  %>
