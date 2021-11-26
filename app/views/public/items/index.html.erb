@@ -1,2 +1,23 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-2'>
+      <%= render 'public/items/category_search', category: @categories %>
+    </div>
+    <div class='col-md-9 offset-md-1'>
+      <div class='row'>
+        <h4>商品一覧 （全<%= @item.count %>件）</h4>
+        <% @items.each do |items| %>
+          <div class="col-3 item">
+            <%= link_to item_path(items) do %>
+              <%= attachment_image_tag items, :image, width: '80%', height: '70%' %>
+            <% end %><br />
+            <%= link_to items.name, item_path(items), class: "items_#{items.id}" %><br />
+            <!--item.rbでの計算結果を3桁ごとにカンマ区切りで表示-->
+            ￥<%= items.add_tax_price.to_s(:delimited) %> （税込）
+          </div>
+        <% end %>
+      </div>
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>

@@ -1,2 +1,37 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-2'>
+      <%= render 'public/items/category_search', category: @categories %>
+    </div>
+    <div class='col-md-10'>
+      <div>
+        <p class="border">
+          <br />
+          ようこそ、ながのCAKEへ！<br />
+          このサイトは、ケーキ販売のECサイトになります。<br />
+          会員でない方も商品の閲覧はできますが、<br />
+          購入には会員登録が必要になります。<br />
+          <br />
+        </p>
+      </div>
+      <div class='row'>
+        <h4>新着商品</h4>
+        <% @item.each do |item| %>
+          <div class="col-3 item">
+            <%= link_to item_path(item) do %>
+              <%= attachment_image_tag item, :image, width: '90%', height: '80%' %>
+            <% end %><br />
+            <%= link_to item.name, item_path(item), class: "item_#{item.id}" %><br />
+            <!--item.rbでの計算結果を3桁ごとにカンマ区切りで表示-->
+            ￥<%= item.add_tax_price.to_s(:delimited) %> （税込）
+          </div>
+        <% end %>
+      </div>
+      <div class='row'>
+        <div class='col-3 offset-9'>
+          <%=link_to "全ての商品を見る >", items_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

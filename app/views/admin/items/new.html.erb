@@ -1,2 +1,56 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-auto offset-1">
+      <h5>商品新規登録</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <%= form_with model: [:admin, @item], local: true do |f| %>
+        <div class="form-group row">
+          <label for="inputImage", class="col col-form-label">商品画像</label>
+          <div class="col">
+            <%= f.attachment_field :image %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputName", class="col col-form-label">商品名</label>
+          <div class="col">
+            <%= f.text_field :name, placeholder: "商品名", id:"inputName" %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputExplanation", class="col col-form-label">商品説明</label>
+          <div class="col form-control-lg">
+            <%= f.text_area :explanation, placeholder: "ここに説明文を記述します", id:"inputExplanation" %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputCategory", class="col col-form-label">ジャンル</label>
+          <div class="col">
+            <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "--選択してください--"}, id:"inputCategory" %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputPrice", class="col col-form-label">税抜価格</label>
+          <div class="col">
+            <%= f.text_field :price, id:"inputPrice" %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col col-form-label">販売ステータス</label>
+          <div class="col">
+            <%= f.radio_button :is_active, true %>
+            <%= f.label :is_active, '販売中', value: true %>
+
+            <%= f.radio_button :is_active, false %>
+            <%= f.label :is_active, '販売停止中', value: false %>
+          </div>
+        </div>
+        <div class="">
+          <%= f.submit "新規登録", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
